@@ -5,27 +5,44 @@ public class JogoDaVelha {
 		Scanner in = new Scanner(System.in);
 		
 		String mat[][] = new String[3][3];
-		int i, j;
+		int i=0, j=0, k=0;
 		int vitoria=2;
 		for(i=0;i<3;i++) {
 			for(j=0;j<3;j++) {
-				System.out.println("Digite O ou X");
-				mat[i][j] = in.next();
+				mat[i][j] = "A";
 			}
 		}
-		for(i=0;i<3;i++) {
+		for(i=0;i<9;i++) {
+			if(i%2==0) {
+				System.out.println("Linha de X:");
+				k = in.nextInt();
+				System.out.println("Coluna de X:");
+				j = in.nextInt();
+				mat[j][k] = "X";
+			} else {
+				System.out.println("Linha de O:");
+				k = in.nextInt();
+				System.out.println("Coluna de O:");
+				j = in.nextInt();
+				mat[j][k] = "O";
+			}
 			for(j=0;j<3;j++) {
-				if(mat[i][0].equalsIgnoreCase(mat[i][1]) && mat[i][0].equalsIgnoreCase(mat[i][2]) && mat[i][0].equalsIgnoreCase("O") ||
-				mat[0][j].equalsIgnoreCase(mat[1][j]) && mat[1][j].equalsIgnoreCase(mat[2][j]) && mat[0][j].equalsIgnoreCase("O") ||
-				mat[0][0].equalsIgnoreCase(mat[1][1]) && mat[0][0].equalsIgnoreCase(mat[2][2]) && mat[0][0].equalsIgnoreCase("O") ||
-				mat[0][2].equalsIgnoreCase(mat[1][1]) && mat[0][2].equalsIgnoreCase(mat[2][0]) && mat[0][2].equalsIgnoreCase("O")) {
-					vitoria = 0;
-				} else if(mat[i][0].equalsIgnoreCase(mat[i][1]) && mat[i][0].equalsIgnoreCase(mat[i][2]) && mat[i][0].equalsIgnoreCase("X") ||
-				mat[0][j].equalsIgnoreCase(mat[1][j]) && mat[1][j].equalsIgnoreCase(mat[2][j]) && mat[0][j].equalsIgnoreCase("X")
-				|| mat[0][0].equalsIgnoreCase(mat[1][1]) && mat[0][0].equalsIgnoreCase(mat[2][2]) && mat[0][0].equalsIgnoreCase("X") ||
-				mat[0][2].equalsIgnoreCase(mat[1][1]) && mat[0][2].equalsIgnoreCase(mat[2][0]) && mat[0][2].equalsIgnoreCase("X")){
-					vitoria = 1;
+				for(k=0;k<3;k++) {
+					if(mat[j][0].equalsIgnoreCase(mat[j][1]) && mat[j][0].equalsIgnoreCase(mat[j][2]) && mat[j][0].equalsIgnoreCase("O") ||
+					mat[0][k].equalsIgnoreCase(mat[1][k]) && mat[1][k].equalsIgnoreCase(mat[2][k]) && mat[0][k].equalsIgnoreCase("O") ||
+					mat[0][0].equalsIgnoreCase(mat[1][1]) && mat[0][0].equalsIgnoreCase(mat[2][2]) && mat[0][0].equalsIgnoreCase("O") ||
+					mat[0][2].equalsIgnoreCase(mat[1][1]) && mat[0][2].equalsIgnoreCase(mat[2][0]) && mat[0][2].equalsIgnoreCase("O")) {
+						vitoria = 0;
+					} else if(mat[j][0].equalsIgnoreCase(mat[j][1]) && mat[j][0].equalsIgnoreCase(mat[j][2]) && mat[j][0].equalsIgnoreCase("X") ||
+					mat[0][k].equalsIgnoreCase(mat[1][k]) && mat[1][k].equalsIgnoreCase(mat[2][k]) && mat[0][k].equalsIgnoreCase("X")
+					|| mat[0][0].equalsIgnoreCase(mat[1][1]) && mat[0][0].equalsIgnoreCase(mat[2][2]) && mat[0][0].equalsIgnoreCase("X") ||
+					mat[0][2].equalsIgnoreCase(mat[1][1]) && mat[0][2].equalsIgnoreCase(mat[2][0]) && mat[0][2].equalsIgnoreCase("X")){
+						vitoria = 1;
+					}
 				}
+			}
+			if(vitoria!=2) {
+				break;
 			}
 		}
 		if(vitoria==1) {
