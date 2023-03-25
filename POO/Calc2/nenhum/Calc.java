@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class Calc {
+  Scanner in = new Scanner(System.in);
+
+  public void somar(){
+    System.out.println("Digite um numero para fazer a soma: ");
+    double n1 = in.nextInt();
+    System.out.println("Digite outro numero: ");
+    double n2 = in.nextInt();
+    System.out.println("seu resultado é: "+(n1+n2));
+  }
+  public void subtrair() {
+    System.out.println("Digite um numero para fazer a subtração: ");
+    double n1 = in.nextInt();
+    System.out.println("Digite outro numero: ");
+    double n2 = in.nextInt();
+    System.out.println("seu resultado é: "+(n1-n2));
+  }
+  public void multiplicar() {
+    System.out.println("Digite um numero para fazer a multiplicação: ");
+    double n1 = in.nextInt();
+    System.out.println("Digite outro numero: ");
+    double n2 = in.nextInt();
+    System.out.println("seu resultado é: "+(n1*n2));
+  }
+  public void dividir() {
+    System.out.println("Digite um numero para fazer a divisão: ");
+    double n1 = in.nextInt();
+    System.out.println("Digite outro numero: ");
+    double n2 = in.nextInt();
+    System.out.println("seu resultado é: "+(n1/n2));
+  }
+}
