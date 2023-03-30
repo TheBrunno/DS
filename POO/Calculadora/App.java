@@ -4,25 +4,30 @@ public class App {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		Calculadora calc = new Calculadora();
-		
+		double res = 0;
 		System.out.println("Digite o n1");
 		calc.n1 = in.nextDouble();
 		System.out.println("Digite o n2");
 		calc.n2 = in.nextDouble();
-		System.out.println("FaÁa sua escolha:\n1 - Soma\n2-SubtraÁ„o\n3 - MultiplicaÁ„o\n4 - Divis„o:");
+		System.out.println("Fa√ßa sua escolha:\n1 - Soma\n2-Subtra√ß√£o\n3 - Multiplica√ß√£o\n4 - Divis√£o:");
 		int esc = in.nextInt();
 		if(esc == 1) {
 			calc.som();
+			res = calc.som(calc.n1, calc.n2);
 		}else if(esc == 2) {
-			calc.sub();
+			res = calc.sub();
+			calc.sub(calc.n1, calc.n2);
 		}else if(esc == 3) {
-			calc.mut();
+			res = calc.mut();
+			calc.mut(calc.n1, calc.n2);
 		}else if(esc == 4) {
 			calc.div();
+			res = calc.div(calc.n1, calc.n2);
 		}else {
 			System.out.println("ERROR IN EXCEPTION FX0068836: LINE 34:23");
 		}
-		System.out.println("O resultado È: "+calc.res);
+		System.out.println("O resultado √©: "+res);
+		System.out.println("O resultado √©: "+calc.res);
 		
 	}
 }
