@@ -218,6 +218,7 @@ public class Gui extends JFrame {
 		ImageIcon imagePResized = new ImageIcon(imagePResizor);
 		mobPerfil.setIcon(imagePResized);
 		this.add(mobPerfil);
+		mobPerfil.setVisible(false);
 		
 		JLabel mobBg  = new JLabel();
 		mobBg.setBounds(449, 175, 80, 80);
@@ -225,6 +226,7 @@ public class Gui extends JFrame {
 		mobBg.setOpaque(true);
 		mobBg.setBorder(blackline);
 		this.add(mobBg);
+		mobBg.setVisible(false);
 		
 		
 		JLabel bgPerfil = new JLabel();
@@ -234,40 +236,47 @@ public class Gui extends JFrame {
 		ImageIcon bgResized = new ImageIcon(bgResizor);
 		bgPerfil.setIcon(bgResized);
 		this.add(bgPerfil);
+		bgPerfil.setVisible(false);
 		
 		JLabel pNome = new JLabel();
 		pNome.setBounds(440, 244, 250, 50);
 		pNome.setText("<html><body> <h2 style='color:#9bfda1;'> Player </h1> </body> </html>");
 		this.add(pNome);
+		pNome.setVisible(false);
 		
 		JLabel pIdade = new JLabel();
 		pIdade.setBounds(440, 274, 250, 50);
 		pIdade.setText("Idade: 18");
 		pIdade.setForeground(Color.WHITE);
 		this.add(pIdade);
+		pIdade.setVisible(false);
 		
 		JLabel pSexo = new JLabel();
 		pSexo.setBounds(440, 294, 250, 50);
 		pSexo.setText("Sexo: M");
 		pSexo.setForeground(Color.WHITE);
 		this.add(pSexo);
+		pSexo.setVisible(false);
 		
 		JLabel pEdicoes = new JLabel();
 		pEdicoes.setBounds(440, 314, 250, 50);
 		pEdicoes.setText("Edicoes: Java");
 		pEdicoes.setForeground(Color.WHITE);
 		this.add(pEdicoes);
+		pEdicoes.setVisible(false);
 		
 		JLabel pData = new JLabel();
 		pData.setBounds(440, 384, 250, 50);
-		pData.setText("<html> <body> <p style='font-size:12px; color:#dadada'> Data de Criação </p> </html> </body>");
+		pData.setText("<html> <body> <p style='font-size:12px; color:#dadada'> Data de CriaÃ§Ã£o </p> </html> </body>");
 		this.add(pData);
+		pData.setVisible(false);
 		
 		JLabel pCriacao = new JLabel();
 		pCriacao.setBounds(440, 414, 250, 50);
 		pCriacao.setText("01/01/1970");
 		pCriacao.setForeground(Color.WHITE);
 		this.add(pCriacao);
+		pCriacao.setVisible(false);
 		
 		JLabel perfil = new JLabel();
 		perfil.setBounds(425, 80, 300, 450);
@@ -275,6 +284,7 @@ public class Gui extends JFrame {
 		perfil.setOpaque(true);
 		perfil.setBackground(Color.GRAY);
 		this.add(perfil);
+		perfil.setVisible(false);
 		
 		btnConfirm.addActionListener(new ActionListener() {
 			@Override
@@ -298,6 +308,7 @@ public class Gui extends JFrame {
 					mobPerfil.setBounds(451, 180, 75, 70);
 					mobPerfil.setIcon(image6Resized);
 				}
+				mobPerfil.setVisible(true);
 				
 				if(dimensao2.getSelectedIndex()==0) {
 					ImageIcon imagebgPerfil = new ImageIcon("img\\overworld.png");
@@ -315,18 +326,21 @@ public class Gui extends JFrame {
 					ImageIcon bgResized = new ImageIcon(bgResizor);
 					bgPerfil.setIcon(bgResized);
 				}
+				bgPerfil.setVisible(true);
 				
 				if(nome2.getText().isBlank()) {
 					pNome.setText("<html><body> <h2 style='color:#9bfda1;'> Guest </h1> </body> </html>");
 				} else {
 					pNome.setText("<html><body> <h2 style='color:#9bfda1;'>"+nome2.getText()+"</h1> </body> </html>");
 				}
+				pNome.setVisible(true);
 				
 				if(idade2.getText().isBlank()) {
 					pIdade.setText("Idade: Desconhecido");
 				} else {
 					pIdade.setText("Idade: "+idade2.getText());
 				}
+				pIdade.setVisible(true);
 				
 				if(rdSexo1.isSelected()) {
 					pSexo.setText("Sexo: "+rdSexo1.getText());
@@ -335,6 +349,7 @@ public class Gui extends JFrame {
 				} else if(rdSexo3.isSelected()) {
 					pSexo.setText("Sexo: "+rdSexo3.getText());
 				}
+				pSexo.setVisible(true);
 				
 				String pEdi = "Edicoes: ";
 				
@@ -345,8 +360,14 @@ public class Gui extends JFrame {
 					pEdi = pEdi + "Bedrock";
 				}
 				pEdicoes.setText(pEdi);
+				pEdicoes.setVisible(true);
 				
 				pCriacao.setText(formattedDate);
+				pCriacao.setVisible(true);
+				
+				pData.setVisible(true);
+				perfil.setVisible(true);
+				mobBg.setVisible(true);
 				
 			}
 		});
