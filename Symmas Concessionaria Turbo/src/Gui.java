@@ -59,7 +59,7 @@ public class Gui extends JFrame  {
 		
 		JLabel linha = new JLabel();
 		linha.setBounds(0, 200, width, 5);
-		ImageIcon imgLinha = new ImageIcon("../img/line.png");
+		ImageIcon imgLinha = new ImageIcon("img/line.png");
 		ImageIcon linhaRisized = new ImageIcon(imgLinha.getImage().getScaledInstance(linha.getWidth(), linha.getHeight(), Image.SCALE_SMOOTH));
 		linha.setIcon(linhaRisized);
 		layeredPane.add(linha, 1);
