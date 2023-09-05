@@ -1,5 +1,9 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -8,7 +12,7 @@ public class Gui extends JFrame  {
 	private int width = 1000;
 
 	public Gui() {
-		this.setTitle("Symmas Concessionária Turbo (Orçamento)");
+		this.setTitle("Symmas Concessionaria Turbo (Orcamento)");
 		this.setSize(width, height);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -17,26 +21,29 @@ public class Gui extends JFrame  {
 		UIManager.put("RadioButton.focus", Color.WHITE);
 		UIManager.put("CheckBox.focus", Color.WHITE);
 		UIManager.put("ComboBox.focus", Color.WHITE);
+		Border thickline = BorderFactory.createLineBorder(Color.black, 6);
 
 		JLayeredPane layeredPane = new JLayeredPane();
 		layeredPane.setBounds(0, 0, width, height);
-
+		
+		JLabel carroNome = new JLabel();
+		carroNome.setBounds(450, 560, 420, 50);
+		carroNome.setText("<html><body style='font-size: 30px'>Camaro</body></html>");
+		carroNome.setHorizontalAlignment(SwingConstants.CENTER);
+		layeredPane.add(carroNome, 1);
+		carroNome.setVisible(false);
 		try {
-			Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("../img/fonts/High Speed.ttf"));
+			Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("img/fonts/High Speed.ttf"));
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			ge.registerFont(customFont);
 
-			JLabel carroNome = new JLabel();
-			carroNome.setBounds(450, 520, 420, 50);
-			carroNome.setText("<html><body style='font-size: 30px'>Camaro</body></html>");
-			carroNome.setHorizontalAlignment(SwingConstants.CENTER);
 			carroNome.setFont(customFont);
-			layeredPane.add(carroNome, 1);
 		} catch (FontFormatException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		
 		JLabel header = new JLabel();
 		header.setBounds(430, 85, 1000, 40);
@@ -45,7 +52,7 @@ public class Gui extends JFrame  {
 		
 		JLabel logo = new JLabel();
 		logo.setBounds(50, 40, 305, 117);
-		ImageIcon imgLogo = new ImageIcon("../img/logo.png");
+		ImageIcon imgLogo = new ImageIcon("img/logo.png");
 		ImageIcon logoRisized = new ImageIcon(imgLogo.getImage().getScaledInstance(logo.getWidth(), logo.getHeight(), Image.SCALE_SMOOTH));
 		logo.setIcon(logoRisized);
 		layeredPane.add(logo, 1);
@@ -59,7 +66,7 @@ public class Gui extends JFrame  {
 		
 		JLabel informacoes = new JLabel();
 		informacoes.setBounds(30, 180, 300, 40);
-		informacoes.setText("<html><body style='font-size: 14px; padding: 0 15px; background-color:#fff;'>Informações pessoais</body></html>");
+		informacoes.setText("<html><body style='font-size: 14px; padding: 0 15px; background-color:#fff;'>Informacoes pessoais</body></html>");
 		layeredPane.add(informacoes, new Integer(2));
 
 		JLabel nome = new JLabel();
@@ -119,9 +126,8 @@ public class Gui extends JFrame  {
 
 		JComboBox modeloCb = new JComboBox();
 		modeloCb.setBounds(100, 370, 160, 30);
-		modeloCb.addItem("Fiat");
-		modeloCb.addItem("Chevrolet");
-		modeloCb.addItem("Lamborghini");
+		modeloCb.addItem("Cronos");
+		modeloCb.addItem("Pulse");
 		modeloCb.setBackground(Color.WHITE);
 		layeredPane.add(modeloCb, 1);
 
@@ -135,6 +141,7 @@ public class Gui extends JFrame  {
 		rdCor1.setText("Branco");
 		rdCor1.setBackground(new Color(255, 255, 255));
 		layeredPane.add(rdCor1, 1);
+		rdCor1.setSelected(true);
 
 		JRadioButton rdCor2 = new JRadioButton();
 		rdCor2.setBounds(147, 420, 60, 25);
@@ -160,6 +167,8 @@ public class Gui extends JFrame  {
 		bgCor.add(rdCor3);
 		bgCor.add(rdCor4);
 		
+		
+		
 		JLabel opcionais = new JLabel();
 		opcionais.setBounds(120, 470, 100, 30);
 		opcionais.setText("<html><body style='font-size: 12px'>Opcionais:</body></html>");
@@ -179,7 +188,7 @@ public class Gui extends JFrame  {
 
 		JCheckBox ckThree = new JCheckBox();
 		ckThree.setBounds(30, 530, 150, 30);
-		ckThree.setText("Direção Hidráulica");
+		ckThree.setText("Direcao Hidraulica");
 		ckThree.setBackground(Color.WHITE);
 		layeredPane.add(ckThree, 1);
 
@@ -202,23 +211,105 @@ public class Gui extends JFrame  {
 		btnCancel.setText("<html> <body> <p style='font-size:11px;'>Cancelar</p></body> </html>\"");
 		btnCancel.setBackground(new Color(246, 70, 58));
 		layeredPane.add(btnCancel, 1);
+		
 
 		JLabel carroImg = new JLabel();
 		carroImg.setBounds(450, 320, 420, 232);
-		ImageIcon imgCarro = new ImageIcon("../img/chevrolet/camaro-black.png");
+		ImageIcon imgCarro = new ImageIcon("img/lamborghini/huracan-black.png");
 		ImageIcon carroRisized = new ImageIcon(imgCarro.getImage().getScaledInstance(carroImg.getWidth(), carroImg.getHeight(), Image.SCALE_SMOOTH));
 		carroImg.setIcon(carroRisized);
-		layeredPane.add(carroImg, 1);
+		layeredPane.add(carroImg, 0);
+		carroImg.setVisible(false);
 
 		JLabel chamas = new JLabel();
 		chamas.setBounds(0, height-155, width, 117);
-		ImageIcon imgChamas = new ImageIcon("../img/chamas.png");
+		ImageIcon imgChamas = new ImageIcon("img/chamas.png");
 		ImageIcon chamasRisized = new ImageIcon(imgChamas.getImage().getScaledInstance(chamas.getWidth(), chamas.getHeight(), Image.SCALE_SMOOTH));
 		chamas.setIcon(chamasRisized);
 		layeredPane.add(chamas, 1);
-
+		
+		JLabel perfil = new JLabel();
+		perfil.setBounds(446, 316, 427, 240);
+		perfil.setOpaque(true);
+		perfil.setBackground(new Color(236, 236, 236));
+		perfil.setBorder(thickline);
+		layeredPane.add(perfil, 1);
+		perfil.setVisible(false);
+		
+		marcaCb.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(marcaCb.getSelectedItem()=="Fiat") {
+					modeloCb.removeItemAt(0);
+					modeloCb.removeItemAt(0);
+					modeloCb.addItem("Cronos");
+					modeloCb.addItem("Pulse");
+				} else if(marcaCb.getSelectedItem()=="Chevrolet") {
+					modeloCb.removeItemAt(0);
+					modeloCb.removeItemAt(0);
+					modeloCb.addItem("Camaro");
+					modeloCb.addItem("Onix");
+				} else if(marcaCb.getSelectedItem()=="Lamborghini") {
+					modeloCb.removeItemAt(0);
+					modeloCb.removeItemAt(0);
+					modeloCb.addItem("Huracan");
+					modeloCb.addItem("Revuelto");
+				}
+			} 
+		});
+		
+		btnConfirm.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[] color = {"white", "black", "gray", "red"};
+				String[] colorP = {"Branco", "Preto", "Cinza", "Vermelho"};
+				String[] optionals = {"x", "x", "x", "x"};
+				int sCor=0;
+				if(rdCor1.isSelected()) {
+					sCor=0;
+				}else if(rdCor2.isSelected()) {
+					sCor=1;
+				}else if(rdCor3.isSelected()) {
+					sCor=2;
+				}else {
+					sCor=3;
+				}
+				if(modeloCb.getSelectedItem()=="Onix") {
+					carroImg.setBounds(400, 270, 520, 332);
+				} else {
+					carroImg.setBounds(450, 320, 420, 232);
+				}
+				
+				if(ckOne.isSelected()) {
+					optionals[0] = "✓";
+				}
+				if(ckTwo.isSelected()) {
+					optionals[1] = "✓";
+				}
+				if(ckThree.isSelected()) {
+					optionals[2] = "✓";
+				}
+				if(ckFour.isSelected()) {
+					optionals[3] = "✓";
+				}
+				
+				
+				
+				ImageIcon imgCarro = new ImageIcon("img/"+marcaCb.getSelectedItem().toString().toLowerCase()+"/"+modeloCb.getSelectedItem().toString().toLowerCase()+"-"+color[sCor]+".png");
+				ImageIcon carroRisized = new ImageIcon(imgCarro.getImage().getScaledInstance(carroImg.getWidth(), carroImg.getHeight(), Image.SCALE_SMOOTH));
+				carroImg.setIcon(carroRisized);
+				carroNome.setText("<html><body style='font-size: 30px'>"+modeloCb.getSelectedItem()+"</body></html>");
+				
+				perfil.setVisible(true);
+				carroImg.setVisible(true);
+				carroNome.setVisible(true);
+				
+				JOptionPane.showMessageDialog(null,"Nome: "+nomeTx.getText()+" \nCelular: "+celularTx.getText()+"\nEmail: "+emailTx.getText()+"\nCarro: "+marcaCb.getSelectedItem()+" "+modeloCb.getSelectedItem()+" "+colorP[sCor]+"\nAr Condicionado: "+optionals[0]+"\nRodas Liga Leve: "+optionals[1]+"\nDirecao Hidraulica: "+optionals[2]+"\nKit Multimidia: "+optionals[3], "Informacoes", 1, null);
+			}
+		});
+		
 		this.add(layeredPane);
-		ImageIcon img = new ImageIcon("../img/icon.png");
+		ImageIcon img = new ImageIcon("img/icon.png");
 		this.setIconImage(img.getImage());
 		this.setLayout(null);
 		this.setVisible(true);
