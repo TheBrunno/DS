@@ -28,10 +28,9 @@ public class Gui extends JFrame  {
 		
 		JLabel carroNome = new JLabel();
 		carroNome.setBounds(450, 560, 420, 50);
-		carroNome.setText("<html><body style='font-size: 30px'>Camaro</body></html>");
+		carroNome.setText("<html><body style='font-size: 30px'>Cronos</body></html>");
 		carroNome.setHorizontalAlignment(SwingConstants.CENTER);
 		layeredPane.add(carroNome, 1);
-		carroNome.setVisible(false);
 		try {
 			Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("img/fonts/High Speed.ttf"));
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -215,11 +214,10 @@ public class Gui extends JFrame  {
 
 		JLabel carroImg = new JLabel();
 		carroImg.setBounds(450, 320, 420, 232);
-		ImageIcon imgCarro = new ImageIcon("img/lamborghini/huracan-black.png");
+		ImageIcon imgCarro = new ImageIcon("img/fiat/cronos-white.png");
 		ImageIcon carroRisized = new ImageIcon(imgCarro.getImage().getScaledInstance(carroImg.getWidth(), carroImg.getHeight(), Image.SCALE_SMOOTH));
 		carroImg.setIcon(carroRisized);
 		layeredPane.add(carroImg, 0);
-		carroImg.setVisible(false);
 
 		JLabel chamas = new JLabel();
 		chamas.setBounds(0, height-155, width, 117);
@@ -229,36 +227,13 @@ public class Gui extends JFrame  {
 		layeredPane.add(chamas, 1);
 		
 		JLabel perfil = new JLabel();
-		perfil.setBounds(446, 316, 427, 240);
+		perfil.setBounds(446, 316, 428, 241);
 		perfil.setOpaque(true);
 		perfil.setBackground(new Color(236, 236, 236));
 		perfil.setBorder(thickline);
 		layeredPane.add(perfil, 1);
-		perfil.setVisible(false);
 		
-		marcaCb.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(marcaCb.getSelectedItem()=="Fiat") {
-					modeloCb.removeItemAt(0);
-					modeloCb.removeItemAt(0);
-					modeloCb.addItem("Cronos");
-					modeloCb.addItem("Pulse");
-				} else if(marcaCb.getSelectedItem()=="Chevrolet") {
-					modeloCb.removeItemAt(0);
-					modeloCb.removeItemAt(0);
-					modeloCb.addItem("Camaro");
-					modeloCb.addItem("Onix");
-				} else if(marcaCb.getSelectedItem()=="Lamborghini") {
-					modeloCb.removeItemAt(0);
-					modeloCb.removeItemAt(0);
-					modeloCb.addItem("Huracan");
-					modeloCb.addItem("Revuelto");
-				}
-			} 
-		});
-		
-		btnConfirm.addActionListener(new ActionListener() {
+		ActionListener corlist = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String[] color = {"white", "black", "gray", "red"};
@@ -278,7 +253,59 @@ public class Gui extends JFrame  {
 					carroImg.setBounds(400, 270, 520, 332);
 				} else {
 					carroImg.setBounds(450, 320, 420, 232);
+				}	
+				ImageIcon imgCarro = new ImageIcon("img/"+marcaCb.getSelectedItem().toString().toLowerCase()+"/"+modeloCb.getSelectedItem().toString().toLowerCase()+"-"+color[sCor]+".png");
+				ImageIcon carroRisized = new ImageIcon(imgCarro.getImage().getScaledInstance(carroImg.getWidth(), carroImg.getHeight(), Image.SCALE_SMOOTH));
+				carroImg.setIcon(carroRisized);
+				carroNome.setText("<html><body style='font-size: 30px'>"+modeloCb.getSelectedItem()+"</body></html>");
+			}
+		};
+		
+		marcaCb.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(marcaCb.getSelectedItem()=="Fiat") {
+					modeloCb.removeItemAt(0);
+					modeloCb.addItem("Cronos");
+					modeloCb.removeItemAt(0);
+					modeloCb.addItem("Pulse");
+				} else if(marcaCb.getSelectedItem()=="Chevrolet") {
+					modeloCb.removeItemAt(0);
+					modeloCb.addItem("Camaro");
+					modeloCb.removeItemAt(0);
+					modeloCb.addItem("Onix");
+				} else if(marcaCb.getSelectedItem()=="Lamborghini") {
+					modeloCb.removeItemAt(0);
+					modeloCb.addItem("Huracan");
+					modeloCb.removeItemAt(0);
+					modeloCb.addItem("Revuelto");
 				}
+			} 
+		});
+		
+		modeloCb.addActionListener(corlist);
+		rdCor1.addActionListener(corlist);
+		rdCor2.addActionListener(corlist);
+		rdCor3.addActionListener(corlist);
+		rdCor4.addActionListener(corlist);
+		
+		btnConfirm.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String[] color = {"white", "black", "gray", "red"};
+				String[] colorP = {"Branco", "Preto", "Cinza", "Vermelho"};
+				String[] optionals = {"x", "x", "x", "x"};
+				int sCor=0;
+				if(rdCor1.isSelected()) {
+					sCor=0;
+				}else if(rdCor2.isSelected()) {
+					sCor=1;
+				}else if(rdCor3.isSelected()) {
+					sCor=2;
+				}else {
+					sCor=3;
+				}
+				
 				
 				if(ckOne.isSelected()) {
 					optionals[0] = "✓";
@@ -294,17 +321,14 @@ public class Gui extends JFrame  {
 				}
 				
 				
-				
-				ImageIcon imgCarro = new ImageIcon("img/"+marcaCb.getSelectedItem().toString().toLowerCase()+"/"+modeloCb.getSelectedItem().toString().toLowerCase()+"-"+color[sCor]+".png");
-				ImageIcon carroRisized = new ImageIcon(imgCarro.getImage().getScaledInstance(carroImg.getWidth(), carroImg.getHeight(), Image.SCALE_SMOOTH));
-				carroImg.setIcon(carroRisized);
-				carroNome.setText("<html><body style='font-size: 30px'>"+modeloCb.getSelectedItem()+"</body></html>");
-				
-				perfil.setVisible(true);
-				carroImg.setVisible(true);
-				carroNome.setVisible(true);
-				
 				JOptionPane.showMessageDialog(null,"Nome: "+nomeTx.getText()+" \nCelular: "+celularTx.getText()+"\nEmail: "+emailTx.getText()+"\nCarro: "+marcaCb.getSelectedItem()+" "+modeloCb.getSelectedItem()+" "+colorP[sCor]+"\nAr Condicionado: "+optionals[0]+"\nRodas Liga Leve: "+optionals[1]+"\nDirecao Hidraulica: "+optionals[2]+"\nKit Multimidia: "+optionals[3], "Informacoes", 1, null);
+			}
+		});
+		
+		btnCancel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
 			}
 		});
 		
@@ -314,4 +338,5 @@ public class Gui extends JFrame  {
 		this.setLayout(null);
 		this.setVisible(true);
 	}
+	
 }
