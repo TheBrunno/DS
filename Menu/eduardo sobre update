@@ -92,23 +92,23 @@ public class Sobre extends JDialog{
         this.add(linkButton2);
         
         JLabel frase1 = new JLabel();
-        frase1.setText("<html><body><p style='font-size:13px;font-family: 'Arial';>Meu coraÁ„o est· na tecnologia, e meu sonho È fazer m·quinas aprenderem a sonhar.</p></body></html>");
+        frase1.setText("<html><body><p style='font-size:13px;font-family: 'Arial';>Meu cora√ß√£o est√° na tecnologia, e meu sonho √© fazer m√°quinas aprenderem a sonhar.</p></body></html>");
         frase1.setBounds(30, 130, width/2-30, 100);
         this.add(frase1);
         
         JLabel frase2 = new JLabel();
-        frase2.setText("<html><body><p style='font-size:13px;font-family: 'Arial';>Meu coraÁ„o est· na tecnologia, e meu sonho È fazer m·quinas aprenderem a sonhar.</p></body></html>");
+        frase2.setText("<html><body><p style='font-size:13px;font-family: 'Arial';>Conhecimento pode mudar seu destino, e dilig√™ncia sempre resultar√° em gl√≥ria.</p></body></html>");
         frase2.setBounds(width/2+30, 130, width/2-30, 100);
         this.add(frase2);
         
         JLabel bio1 = new JLabel();
-        bio1.setText("<html><body><p style='font-size:13px;font-family: 'Arial';>Um jovem de 17 anos apaixonado por Desenvolvimento de Sistemas, com um foco irresistÌvel no back-end e um toque de ousadia no front-end. Seu sonho È mergulhar de cabeÁa na inteligÍncia artificial, dominando Python, Java, JavaScript, C++, SQL Server e MongoDB no caminho para o sucesso.</p></body></html>");
+        bio1.setText("<html><body><p style='font-size:13px;font-family: 'Arial';>Um jovem de 17 anos apaixonado por Desenvolvimento de Sistemas, com um foco irresist√≠vel no back-end e um toque de ousadia no front-end. Seu sonho √© mergulhar de cabe√ßa na intelig√™ncia artificial, dominando Python, Java, JavaScript, C++, SQL Server e MongoDB no caminho para o sucesso.</p></body></html>");
         bio1.setBounds(30, 220, width/2-55, 200);
         bio1.setFont(new Font(bio1.getFont().getFontName(), Font.PLAIN, bio1.getFont().getSize()));
         this.add(bio1);
         
         JLabel bio2 = new JLabel();
-        bio2.setText("<html><body><p style='font-size:13px;font-family: 'Arial';>Um jovem de 17 anos apaixonado por Desenvolvimento de Sistemas, com um foco irresistÌvel no back-end e um toque de ousadia no front-end. Seu sonho È mergulhar de cabeÁa na inteligÍncia artificial, dominando Python, Java, JavaScript, C++, SQL Server e MongoDB no caminho para o sucesso.</p></body></html>");
+        bio2.setText("<html><body><p style='font-size:13px;font-family: 'Arial';>Um jovem de 16 anos, fascinado por Desenvolvimento de Sistemas e programa√ß√£o back-end. Al√©m de programador, tamb√©m atua na √°rea de escrita criativa, reconhecido pelo seu trabalho como tradutor e escritor. Seu sonho √© fazer uma marca na hist√≥ria da programa√ß√£o atrav√©s de trabalho duro e dilig√™ncia.</p></body></html>");
         bio2.setBounds(width/2+30, 220, width/2-55, 200);
         bio2.setFont(new Font(bio1.getFont().getFontName(), Font.PLAIN, bio1.getFont().getSize()));
         this.add(bio2);
