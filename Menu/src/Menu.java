@@ -18,12 +18,14 @@ public class Menu extends JFrame{
 		JMenuItem mcn = new JMenuItem("MCN - The Minecraft Network");
 		JMenuItem calc = new JMenuItem("Calculadora Monokuma");
 		JMenuItem budget = new JMenuItem("Orcamento Symmas Concessionaria");
+		JMenuItem game = new JMenuItem("Jogo da Velha");
 		JMenuItem about = new JMenuItem("Sobre");
 		
 		files.add(exit);
 		apps.add(mcn);
 		apps.add(calc);
 		apps.add(budget);
+		apps.add(game);
 		help.add(about);
 		
 		JMenuBar bar = new JMenuBar();
@@ -48,6 +50,7 @@ public class Menu extends JFrame{
 		Calculadora mono = new Calculadora();
 		Cadastro mc = new Cadastro();
 		Sobre sob = new Sobre();
+		JogoDaVelha velha = new JogoDaVelha();
 		
 		budget.addActionListener(new ActionListener() {
 			@Override
@@ -67,6 +70,13 @@ public class Menu extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				mc.setVisible(true);
+			}
+		});
+		
+		game.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				velha.setVisible(true);
 			}
 		});
 		
