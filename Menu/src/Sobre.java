@@ -98,7 +98,7 @@ public class Sobre extends JDialog{
         
         JLabel frase2 = new JLabel();
         frase2.setText("<html><body><p style='font-size:13px;font-family: 'Arial';>Conhecimento pode mudar seu destino, e diligência sempre resultará em glória.</p></body></html>");
-        frase2.setBounds(width/2+30, 130, width/2-30, 100);
+        frase2.setBounds(width/2+30, 130, width/2-45, 100);
         this.add(frase2);
         
         JLabel bio1 = new JLabel();

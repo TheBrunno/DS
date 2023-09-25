@@ -11,7 +11,32 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class JogoDaVelha extends JDialog {
+	private JLabel result;
+	private int[][] clicked = new int[3][3];
+	private int[][] boardMatrix = new int[3][3];
+	
+	private int wins1=0;
+	private int wins2=0;
+	
+	private String player1_data[] = new String[4];
+	private String player2_data[] = new String[4];
+	
+	private JLabel winsP2 = new JLabel();
+	private JLabel winsP1 = new JLabel();
+	
+	private int vez = 0;
+	private int vezN = 0;
+	
+	private JLabel nomeP1 = new JLabel();
+	private JLabel nomeP2 = new JLabel();
+	private JLabel winMsg = new JLabel();
+	private JLabel player1 = new JLabel();
+	private JLabel player2 = new JLabel();
+	
 	public JogoDaVelha() {
 		this.setTitle("Jogo da Velha");
 		this.setModal(true);
@@ -27,10 +52,13 @@ public class JogoDaVelha extends JDialog {
 		
 		UIManager.put("RadioButton.focus", new ColorUIResource(new Color(255, 255, 255)));
 		UIManager.put("Button.focus", new ColorUIResource(new Color(91, 139, 50)));
-		Border blackline = BorderFactory.createLineBorder(Color.black, 2);
-		Border thickline = BorderFactory.createLineBorder(Color.black, 4);
+		Border blackline = BorderFactory.createLineBorder(Color.black, 1);
+		Border thickline = BorderFactory.createLineBorder(Color.black, 2);
 		
 
+		
+		ImageIcon player1image[] = new ImageIcon[1];
+		ImageIcon player2image[] = new ImageIcon[1];
 		
 		// Guia 1
 		JPanel p1 = new JPanel();
@@ -172,8 +200,7 @@ public class JogoDaVelha extends JDialog {
 		cadastrar.setText("Cadastrar");
 		cadastrar.setBackground(new Color(133, 85, 163));
 		cadastrar.setForeground(Color.WHITE);
-		p1.add(cadastrar);
-		
+		p1.add(cadastrar);		
 		
 		//Guia 2
 		JPanel p2 = new JPanel();
@@ -288,42 +315,20 @@ public class JogoDaVelha extends JDialog {
 		p2.add(cadastrar2);
 		
 		
+		
 		//Guia 3
 		JPanel p3 = new JPanel();
 		p3.setLayout(null);
 		p3.setBackground(Color.WHITE);
 		
 		JLabel board = new JLabel();
-		board.setBounds(250, 50, 300, 300);
+		board.setBounds(250, 80, 300, 300);
 		ImageIcon boardimg = new ImageIcon("img/jogo/board.png");
 		Image boardRe = boardimg.getImage().getScaledInstance(board.getWidth(), board.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon newBoard = new ImageIcon(boardRe);
 		board.setIcon(newBoard);
 		p3.add(board);
 		
-		JLabel player1 = new JLabel();
-		player1.setBounds(50, 400, 67, 70);
-		try {
-			BufferedImage mirror = ImageIO.read(new File("img/jogo/steve.png"));
-			AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
-            tx.translate(-mirror.getWidth(null), 0);
-            AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-            mirror = op.filter(mirror, null);
-            ImageIcon rIcon = new ImageIcon(mirror);
-            Image rIconRe = rIcon.getImage().getScaledInstance(player1.getWidth(), player1.getHeight(), Image.SCALE_SMOOTH);
-            ImageIcon newRIcon = new ImageIcon(rIconRe);
-            player1.setIcon(newRIcon);
-            p3.add(player1);
-		}catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		JLabel borderP1 = new JLabel();
-		borderP1.setBounds(45, 395, 77, 80);
-		borderP1.setBorder(thickline);
-		p3.add(borderP1);
-		
-		JLabel player2 = new JLabel();
 		player2.setBounds(663, 400, 67, 70);
 		player2.setIcon(imageResized);
 		p3.add(player2);
@@ -332,37 +337,8 @@ public class JogoDaVelha extends JDialog {
 		borderP2.setBounds(658, 395, 77, 80);
 		borderP2.setBorder(thickline);
 		p3.add(borderP2);
-		
-		JLabel nomeP1 = new JLabel();
-		nomeP1.setBounds(130, 395, 200, 30);
-		nomeP1.setText("<html><body> <h2 style='color:#5535e6;'> Player 1 </h2> </body> </html>");
-		p3.add(nomeP1);
-		
-		JLabel nomeP2 = new JLabel();
-		nomeP2.setBounds(453, 395, 200, 30);
-		nomeP2.setText("<html><body> <h2 style='color:#5535e6;'> Player 2 </h2> </body> </html>");
-		nomeP2.setHorizontalAlignment(SwingConstants.RIGHT);
-		p3.add(nomeP2);
-		
-		JLabel winsP1 = new JLabel();
-		winsP1.setBounds(130, 420, 200, 30);
-		winsP1.setText("<html><body> <h3> Wins: 30 </h3> </body> </html>");
-		p3.add(winsP1);
-		
-		JLabel winsP2 = new JLabel();
-		winsP2.setBounds(453, 420, 200, 30);
-		winsP2.setText("<html><body> <h3> Wins: 10 </h3> </body> </html>");
-		winsP2.setHorizontalAlignment(SwingConstants.RIGHT);
-		p3.add(winsP2);
-		
-		JLabel result = new JLabel();
-		result.setBounds(20,120,200,30);
-		result.setText("<html><body> <h1> Player 1 Wins! </h1> </body> </html>");
-		p3.add(result);
-		
-		JLabel winMsg = new JLabel();
+				
 		winMsg.setBounds(20,140,200,100);
-		winMsg.setText("<html><body> <h3> \"Insert player win message here\" </h3> </body> </html>");
 		p3.add(winMsg);
 		
 		JButton reset = new JButton();
@@ -381,88 +357,527 @@ public class JogoDaVelha extends JDialog {
 		clear.setForeground(Color.WHITE);
 		p3.add(clear);
 		
+		JButton register = new JButton();
+		register.setBounds(600, 260, 150, 30);
+		register.setFocusPainted(false);
+		register.setText("Recadastro");
+		register.setBackground(new Color(133, 85, 163));
+		register.setForeground(Color.WHITE);
+		p3.add(register);
+		
 		JButton pos1 = new JButton();
-		pos1.setBounds(260, 60, 80, 80);
+		pos1.setBounds(260, 90, 80, 80);
 		ImageIcon x = new ImageIcon("img/jogo/twitter.png");
 		Image xRe = x.getImage().getScaledInstance(pos1.getWidth(), pos1.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon newX = new ImageIcon(xRe);
-		pos1.setIcon(newX);
 		pos1.setBackground(Color.WHITE);
 		pos1.setBorder(null);
 		pos1.setFocusPainted(false);
 		p3.add(pos1);
 		
 		JButton pos2 = new JButton();
-		pos2.setBounds(360, 60, 80, 80);
+		pos2.setBounds(360, 90, 80, 80);
 		ImageIcon o = new ImageIcon("img/jogo/circle.png");
 		Image oRe = o.getImage().getScaledInstance(pos1.getWidth(), pos1.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon newO = new ImageIcon(oRe);
-		pos2.setIcon(newO);
 		pos2.setBackground(Color.WHITE);
 		pos2.setBorder(null);
 		pos2.setFocusPainted(false);
 		p3.add(pos2);
 		
 		JButton pos3 = new JButton();
-		pos3.setBounds(460, 60, 80, 80);
-		pos3.setIcon(newX);
+		pos3.setBounds(460, 90, 80, 80);
 		pos3.setBackground(Color.WHITE);
 		pos3.setBorder(null);
 		pos3.setFocusPainted(false);
 		p3.add(pos3);
 		
 		JButton pos4 = new JButton();
-		pos4.setBounds(260, 160, 80, 80);
-		pos4.setIcon(newX);
+		pos4.setBounds(260, 190, 80, 80);
 		pos4.setBackground(Color.WHITE);
 		pos4.setBorder(null);
 		pos4.setFocusPainted(false);
 		p3.add(pos4);
 		
 		JButton pos5 = new JButton();
-		pos5.setBounds(360, 160, 80, 80);
-		pos5.setIcon(newX);
+		pos5.setBounds(360, 190, 80, 80);
 		pos5.setBackground(Color.WHITE);
 		pos5.setBorder(null);
 		pos5.setFocusPainted(false);
 		p3.add(pos5);
 		
 		JButton pos6 = new JButton();
-		pos6.setBounds(460, 160, 80, 80);
-		pos6.setIcon(newX);
+		pos6.setBounds(460, 190, 80, 80);
 		pos6.setBackground(Color.WHITE);
 		pos6.setBorder(null);
 		pos6.setFocusPainted(false);
 		p3.add(pos6);
 		
 		JButton pos7 = new JButton();
-		pos7.setBounds(260, 260, 80, 80);
-		pos7.setIcon(newX);
+		pos7.setBounds(260, 290, 80, 80);
 		pos7.setBackground(Color.WHITE);
 		pos7.setBorder(null);
 		pos7.setFocusPainted(false);
 		p3.add(pos7);
 		
 		JButton pos8 = new JButton();
-		pos8.setBounds(360, 260, 80, 80);
-		pos8.setIcon(newX);
+		pos8.setBounds(360, 290, 80, 80);
 		pos8.setBackground(Color.WHITE);
 		pos8.setBorder(null);
 		pos8.setFocusPainted(false);
 		p3.add(pos8);
 		
 		JButton pos9 = new JButton();
-		pos9.setBounds(460, 260, 80, 80);
-		pos9.setIcon(newX);
+		pos9.setBounds(460, 290, 80, 80);
 		pos9.setBackground(Color.WHITE);
 		pos9.setBorder(null);
 		pos9.setFocusPainted(false);
 		p3.add(pos9);
 		
+		ActionListener cadastro1 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String possibles[] = {"twitter", "circle"};
+				
+				player1_data[0] = nomeinput.getText();
+				player1_data[1] = possibles[simboloinput.getSelectedIndex()];
+				player1_data[2] = wininput.getText();
+				
+				if(nomeinput.getText().isEmpty()) {
+					player1_data[0] = "Player 1";
+				}
+				
+				if(mob1.isSelected()) {
+					player1image[0] = imageResized;
+				} else if(mob2.isSelected()) {
+					player1image[0] = image2Resized;
+				} else if(mob3.isSelected()) {
+					player1image[0] = image3Resized;
+				} else if(mob4.isSelected()) {
+					player1image[0] = image4Resized;
+				} else if(mob5.isSelected()) {
+					player1image[0] = image5Resized;
+				} else if(mob6.isSelected()) {
+					player1image[0] = image6Resized;
+				} else {
+					player1image[0] = imageResized;
+				}
+				
+				tp.setEnabledAt(1, true);
+				tp.setSelectedIndex(1);
+				tp.setEnabledAt(0, false);
+			}
+		};
+		
+		
+		cadastrar.addActionListener(cadastro1);
+		
+		ActionListener cadastro2 = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String possibles[] = {"twitter", "circle"};
+				
+				player2_data[0] = nomeinput2.getText();
+				player2_data[1] = possibles[1-simboloinput.getSelectedIndex()];
+				player2_data[2] = wininput2.getText();
+				
+				if(nomeinput2.getText().isEmpty()) {
+					player2_data[0] = "Player 2";
+				}
+				
+				if(p2mob1.isSelected()) {
+					player2image[0] = imageResized;
+				} else if(p2mob2.isSelected()) {
+					player2image[0] = image2Resized;
+				} else if(p2mob3.isSelected()) {
+					player2image[0] = image3Resized;
+				} else if(p2mob4.isSelected()) {
+					player2image[0] = image4Resized;
+				} else if(p2mob5.isSelected()) {
+					player2image[0] = image5Resized;
+				} else if(p2mob6.isSelected()) {
+					player2image[0] = image6Resized;
+				} else {
+					player2image[0] = imageResized;
+				}
+				
+				tp.setEnabledAt(2, true);
+				tp.setSelectedIndex(2);
+				tp.setEnabledAt(1, false);
+				
+				if(player1_data[1].equals("twitter")) vez = 0;
+				else vez = 1;
+				
+				result = new JLabel();
+				result.setBounds(20,120,300,30);
+				result.setText("<html><body> <h1> Vez de "+player1_data[0]+"</h1> </body> </html>");
+				p3.add(result);
+				
+				nomeP1.setBounds(130, 395, 200, 30);
+				nomeP1.setText("<html><body> <h2 style='color:#5535e6;'> "+player1_data[0]+" </h2> </body> </html>");
+				p3.add(nomeP1);
+				
+				player1.setBounds(50, 400, 67, 70);
+				BufferedImage mirror = new BufferedImage(
+					player1image[0].getIconWidth(),
+					player1image[0].getIconHeight(),
+				    BufferedImage.TYPE_INT_ARGB
+				);
+
+				Graphics g = mirror.createGraphics();
+				player1image[0].paintIcon(null, g, 0, 0);
+				g.dispose();
+				
+				AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
+				tx.translate(-mirror.getWidth(null), 0);
+				AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+				mirror = op.filter(mirror, null);
+				ImageIcon rIcon = new ImageIcon(mirror);
+				Image rIconRe = rIcon.getImage().getScaledInstance(player1.getWidth(), player1.getHeight(), Image.SCALE_SMOOTH);
+				ImageIcon newRIcon = new ImageIcon(rIconRe);
+				player1.setIcon(newRIcon);
+				p3.add(player1);
+				
+				JLabel borderP1 = new JLabel();
+				borderP1.setBounds(45, 395, 77, 80);
+				borderP1.setBorder(thickline);
+				p3.add(borderP1);
+				
+				//p2
+				nomeP2.setBounds(453, 395, 200, 30);
+				nomeP2.setText("<html><body> <h2 style='color:#5535e6;'> "+player2_data[0]+" </h2> </body> </html>");
+				nomeP2.setHorizontalAlignment(SwingConstants.RIGHT);
+				p3.add(nomeP2);
+				
+				player2.setIcon(player2image[0]);
+				
+				winsP1.setBounds(130, 420, 200, 30);
+				winsP1.setText("<html><body> <h3> Wins: "+wins1+" </h3> </body> </html>");
+				p3.add(winsP1);
+				
+				winsP2.setBounds(453, 420, 200, 30);
+				winsP2.setText("<html><body> <h3> Wins: "+wins2+" </h3> </body> </html>");
+				winsP2.setHorizontalAlignment(SwingConstants.RIGHT);
+				p3.add(winsP2);
+				
+				
+			}
+		};
+		
+		cadastrar2.addActionListener(cadastro2);
+		
+		ActionListener pos1action = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(clicked[0][0] == 0) {
+					if(vez%2==0) pos1.setIcon(newX);
+					else pos1.setIcon(newO);
+					vez++;
+					if(++vezN % 2 == 0) {
+						result.setText("<html><body> <h1> Vez de "+player1_data[0]+"</h1> </body> </html>");
+					}else {
+						result.setText("<html><body> <h1> Vez de "+player2_data[0]+"</h1> </body> </html>");
+					}
+					clicked[0][0] = 1;
+					boardMatrix[0][0] = vezN%2==0 ? 1 : 2;
+					verificaGanhador();
+				}
+			}
+		};
+		pos1.addActionListener(pos1action);
+		ActionListener pos2action = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(clicked[0][1] == 0) {
+					if(vez%2==0) pos2.setIcon(newX);
+					else pos2.setIcon(newO);
+
+					vez++;
+					if(++vezN % 2 == 0) {
+						result.setText("<html><body> <h1> Vez de "+player1_data[0]+"</h1> </body> </html>");
+					}else {
+						result.setText("<html><body> <h1> Vez de "+player2_data[0]+"</h1> </body> </html>");
+					}
+					clicked[0][1] = 1;
+					boardMatrix[0][1] = vezN%2==0 ? 1 : 2;
+					verificaGanhador();
+				}
+			}
+		};
+		pos2.addActionListener(pos2action);
+		ActionListener pos3action = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(clicked[0][2] == 0) {
+					if(vez%2==0) pos3.setIcon(newX);
+					else pos3.setIcon(newO);
+
+					vez++;
+					if(++vezN % 2 == 0) {
+						result.setText("<html><body> <h1> Vez de "+player1_data[0]+"</h1> </body> </html>");
+					}else {
+						result.setText("<html><body> <h1> Vez de "+player2_data[0]+"</h1> </body> </html>");
+					}
+					clicked[0][2] = 1;
+					boardMatrix[0][2] = vezN%2==0 ? 1 : 2;
+					verificaGanhador();
+				}
+			}
+		};
+		pos3.addActionListener(pos3action);
+		ActionListener pos4action = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(clicked[1][0] == 0) {
+					if(vez%2==0) pos4.setIcon(newX);
+					else pos4.setIcon(newO);
+
+					vez++;
+					if(++vezN % 2 == 0) {
+						result.setText("<html><body> <h1> Vez de "+player1_data[0]+"</h1> </body> </html>");
+					}else {
+						result.setText("<html><body> <h1> Vez de "+player2_data[0]+"</h1> </body> </html>");
+					}
+					clicked[1][0] = 1;
+					boardMatrix[1][0] = vezN%2==0 ? 1 : 2;
+					verificaGanhador();
+				}
+			}
+		};
+		pos4.addActionListener(pos4action);
+		ActionListener pos5action = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(clicked[1][1] == 0) {
+					if(vez%2==0) pos5.setIcon(newX);
+					else pos5.setIcon(newO);
+
+					vez++;
+					if(++vezN % 2 == 0) {
+						result.setText("<html><body> <h1> Vez de "+player1_data[0]+"</h1> </body> </html>");
+					}else {
+						result.setText("<html><body> <h1> Vez de "+player2_data[0]+"</h1> </body> </html>");
+					}
+					clicked[1][1] = 1;
+					boardMatrix[1][1] = vezN%2==0 ? 1 : 2;
+					verificaGanhador();
+				}
+			}
+		};
+		pos5.addActionListener(pos5action);
+		ActionListener pos6action = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(clicked[1][2] == 0) {
+					if(vez%2==0) pos6.setIcon(newX);
+					else pos6.setIcon(newO);
+
+					vez++;
+					if(++vezN % 2 == 0) {
+						result.setText("<html><body> <h1> Vez de "+player1_data[0]+"</h1> </body> </html>");
+					}else {
+						result.setText("<html><body> <h1> Vez de "+player2_data[0]+"</h1> </body> </html>");
+					}
+					clicked[1][2] = 1;
+					boardMatrix[1][2] = vezN%2==0 ? 1 : 2;
+					verificaGanhador();
+				}
+			}
+		};
+		pos6.addActionListener(pos6action);
+		ActionListener pos7action = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(clicked[2][0] == 0) {
+					if(vez%2==0) pos7.setIcon(newX);
+					else pos7.setIcon(newO);
+
+					vez++;
+					if(++vezN % 2 == 0) {
+						result.setText("<html><body> <h1> Vez de "+player1_data[0]+"</h1> </body> </html>");
+					}else {
+						result.setText("<html><body> <h1> Vez de "+player2_data[0]+"</h1> </body> </html>");
+					}
+					clicked[2][0] = 1;
+					boardMatrix[2][0] = vezN%2==0 ? 1 : 2;
+					verificaGanhador();
+				}
+			}
+		};
+		pos7.addActionListener(pos7action);
+		ActionListener pos8action = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(clicked[2][1] == 0) {
+					if(vez%2==0) pos8.setIcon(newX);
+					else pos8.setIcon(newO);
+
+					vez++;
+					if(++vezN % 2 == 0) {
+						result.setText("<html><body> <h1> Vez de "+player1_data[0]+"</h1> </body> </html>");
+					}else {
+						result.setText("<html><body> <h1> Vez de "+player2_data[0]+"</h1> </body> </html>");
+					}
+					clicked[2][1] = 1;
+					boardMatrix[2][1] = vezN%2==0 ? 1 : 2;
+					verificaGanhador();
+				}
+			}
+		};
+		pos8.addActionListener(pos8action);
+		ActionListener pos9action = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(clicked[2][2] == 0) {
+					if(vez%2==0) pos9.setIcon(newX);
+					else pos9.setIcon(newO);
+
+					vez++;
+					if(++vezN % 2 == 0) {
+						result.setText("<html><body> <h1> Vez de "+player1_data[0]+"</h1> </body> </html>");
+					}else {
+						result.setText("<html><body> <h1> Vez de "+player2_data[0]+"</h1> </body> </html>");
+					}
+					clicked[2][2] = 1;
+					boardMatrix[2][2] = vezN%2==0 ? 1 : 2;
+					verificaGanhador();
+				}
+			}
+		};
+		pos9.addActionListener(pos9action);
+		
+		ActionListener clear_action = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				for(int i=0; i<3; i++) {
+					for(int j=0; j<3; j++) {
+						clicked[i][j] = 0;
+						boardMatrix[i][j] = 0;
+					}
+				}
+				
+				pos1.setIcon(null);
+				pos2.setIcon(null);
+				pos3.setIcon(null);
+				pos4.setIcon(null);
+				pos5.setIcon(null);
+				pos6.setIcon(null);
+				pos7.setIcon(null);
+				pos8.setIcon(null);
+				pos9.setIcon(null);
+				
+				vezN = 0;
+				if(player1_data[1].equals("twitter")) vez = 0;
+				else vez = 1;
+				result.setText("<html><body> <h1> Vez de "+player1_data[0]+"</h1> </body> </html>");
+				winMsg.setText("");
+			}
+		};
+		clear.addActionListener(clear_action);
+		
+		ActionListener reset_action = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				wins1 = 0;
+				wins2 = 0;
+				
+				winsP1.setText("<html><body> <h3> Wins: "+wins1+" </h3> </body> </html>");
+				winsP2.setText("<html><body> <h3> Wins: "+wins2+" </h3> </body> </html>");
+				winMsg.setText("");
+			}
+		};
+		reset.addActionListener(reset_action);
+		
+		ActionListener register_action = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				wins1=0;
+				wins2=0;
+				
+				for(int i=0; i<3; i++) {
+					for(int j=0; j<3; j++) {
+						clicked[i][j] = 0;
+						boardMatrix[i][j] = 0;
+					}
+				}
+				
+				pos1.setIcon(null);
+				pos2.setIcon(null);
+				pos3.setIcon(null);
+				pos4.setIcon(null);
+				pos5.setIcon(null);
+				pos6.setIcon(null);
+				pos7.setIcon(null);
+				pos8.setIcon(null);
+				pos9.setIcon(null);
+				
+				vezN = 0;
+				if(player1_data[1].equals("twitter")) vez = 0;
+				else vez = 1;
+				
+				result.setText("");
+				nomeP1.setText("");
+				nomeP2.setText("");
+				winMsg.setText("");
+				
+				player1.setIcon(null);
+				player2.setIcon(null);
+				
+				tp.setEnabledAt(0, true);
+				tp.setSelectedIndex(0);
+				tp.setEnabledAt(1, false);
+				tp.setEnabledAt(2, false);
+			}
+		};
+		register.addActionListener(register_action);
 		
 		tp.addTab("Player 1", null, p1, "Cadastro Player 1");
 		tp.addTab("Player 2", null, p2, "Cadastro Player 2");
 		tp.addTab("Jogo", null, p3, "Jogo da Velha");
+		tp.setEnabledAt(1, false);
+		tp.setEnabledAt(2, false);
 		janelaCalc.add(tp);
+	}
+	
+	public void verificaGanhador() {
+		int j=0, k=0;
+		int vitoria=2;
+		
+		for(j=0;j<3;j++) {
+			for(k=0;k<3;k++) {
+				if((boardMatrix[j][0] == boardMatrix[j][1] && boardMatrix[j][0] == boardMatrix[j][2] && boardMatrix[j][0] == 1) ||
+				(boardMatrix[0][k] == boardMatrix[1][k] && boardMatrix[1][k] == boardMatrix[2][k] && boardMatrix[0][k] == 1) ||
+				(boardMatrix[0][0] == boardMatrix[1][1] && boardMatrix[0][0] == boardMatrix[2][2] && boardMatrix[0][0] == 1) ||
+				(boardMatrix[0][2] == boardMatrix[1][1] && boardMatrix[0][2] == boardMatrix[2][0] && boardMatrix[0][2] == 1)) {
+					vitoria = 0;
+				} else if((boardMatrix[j][0] == boardMatrix[j][1] && boardMatrix[j][0] == boardMatrix[j][2] && boardMatrix[j][0] == 2) ||
+				(boardMatrix[0][k] == boardMatrix[1][k] && boardMatrix[1][k] == boardMatrix[2][k] && boardMatrix[0][k] == 2) ||
+				(boardMatrix[0][0] == boardMatrix[1][1] && boardMatrix[0][0] == boardMatrix[2][2] && boardMatrix[0][0] == 2) ||
+				(boardMatrix[0][2] == boardMatrix[1][1] && boardMatrix[0][2] == boardMatrix[2][0] && boardMatrix[0][2] == 2)) {
+					vitoria = 1;
+				}
+			}
+		}
+		if(vitoria!=2) {
+			for(int l=0; l<3; l++) {
+				for(int m=0; m<3; m++) {
+					clicked[l][m] = 1;
+				}
+			}
+			if(vitoria == 0) {
+				wins2++;
+				result.setText("<html><body> <h1> "+player2_data[0]+" venceu. </h1> </body> </html>");
+				winsP2.setText("<html><body> <h3> Wins: "+wins2+" </h3> </body> </html>");
+				if(!player2_data[2].isEmpty()) winMsg.setText("<html><body> <h3> \""+player2_data[2]+"\" </h3> </body> </html>");
+			} else if(vitoria == 1) {
+				wins1++;
+				result.setText("<html><body> <h1> "+player1_data[0]+" venceu. </h1> </body> </html>");
+				winsP1.setText("<html><body> <h3> Wins: "+wins1+" </h3> </body> </html>");
+				if(!player1_data[2].isEmpty()) winMsg.setText("<html><body> <h3> \""+player1_data[2]+"\" </h3> </body> </html>");
+			}
+		} else if(vezN == 9) {
+			result.setText("<html><body> <h1> deu velha :( </h1> </body> </html>");
+		}
 	}
 }
