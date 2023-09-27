@@ -305,16 +305,16 @@ public class Symmas extends JDialog  {
 				
 				
 				if(ckOne.isSelected()) {
-					optionals[0] = "✓";
+					optionals[0] = "v";
 				}
 				if(ckTwo.isSelected()) {
-					optionals[1] = "✓";
+					optionals[1] = "v";
 				}
 				if(ckThree.isSelected()) {
-					optionals[2] = "✓";
+					optionals[2] = "v";
 				}
 				if(ckFour.isSelected()) {
-					optionals[3] = "✓";
+					optionals[3] = "v";
 				}
 				
 				
@@ -325,7 +325,7 @@ public class Symmas extends JDialog  {
 		btnCancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				setVisible(false);
 			}
 		});
 		
