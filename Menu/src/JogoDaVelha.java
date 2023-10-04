@@ -79,52 +79,52 @@ public class JogoDaVelha extends JDialog {
 		JLabel header = new JLabel();
 		header.setBounds(0, 30, 800, 30);
 		header.setHorizontalAlignment(SwingConstants.CENTER);
-		header.setText("<html><body> <h1 style='color:#bb9aff;'> Cadastro - Player 1 </h1> </body> </html>");
+		header.setText("<html><body> <h1 style='color:#dd2e44;'> Cadastro - Player 1 </h1> </body> </html>");
 		p1.add(header);
 		
 		JLabel nome = new JLabel();
-		nome.setBounds(30, 60, 70, 20);
+		nome.setBounds(30, 120, 70, 20);
 		nome.setText("<html><body> <h2> Nome: </h2> </body> </html>");
 		p1.add(nome);
 		
 		JTextField nomeinput = new JTextField();
-		nomeinput.setBounds(100, 62, 150, 20);
+		nomeinput.setBounds(100, 122, 150, 20);
 		nomeinput.setBorder(blackline);
 		p1.add(nomeinput);
 		
 		JLabel simbolo = new JLabel();
-		simbolo.setBounds(30, 100, 90, 25);
+		simbolo.setBounds(30, 160, 90, 25);
 		simbolo.setText("<html> <body> <h2>Simbolo:</h2></body> </html>");
 		p1.add(simbolo);
 		
 		JComboBox<String> simboloinput = new JComboBox<String>();
-		simboloinput.setBounds(120, 100, 100, 30);
+		simboloinput.setBounds(130, 160, 100, 30);
 		simboloinput.addItem("X");
 		simboloinput.addItem("O");
 		p1.add(simboloinput);
 		
 		JLabel win = new JLabel();
-		win.setBounds(30, 140, 230, 25);
+		win.setBounds(30, 200, 230, 25);
 		win.setText("<html><body> <h2> Mensagem de Vitoria: </h2> </body> </html>");
 		p1.add(win);
 		
 		JTextArea wininput = new JTextArea();
-		wininput.setBounds(30, 170, 300, 100);
+		wininput.setBounds(30, 240, 300, 100);
 		wininput.setBorder(blackline);
 		p1.add(wininput);
 		
 		JLabel mobsSection = new JLabel();
 		mobsSection.setText("<html> <body> <p style='font-size:11px;'>Escolha seu mob favorito: </p></body> </html>");
-		mobsSection.setBounds(100, 270, 200, 30);
+		mobsSection.setBounds(500, 120, 200, 30);
 		p1.add(mobsSection);
 
 		JRadioButton mob1 = new JRadioButton();
-		mob1.setBounds(20, 310, 30, 30);
+		mob1.setBounds(420, 160, 30, 30);
 		mob1.setBackground(new Color(255, 255, 255));
 		p1.add(mob1);
 
 		JLabel mob1Image = new JLabel();
-		mob1Image.setBounds(50, 310, 67, 70);
+		mob1Image.setBounds(450, 160, 67, 70);
 		ImageIcon image = new ImageIcon("img/mcn/steve.png");
 		Image imageResizor = image.getImage().getScaledInstance(mob1Image.getWidth(), mob1Image.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon imageResized = new ImageIcon(imageResizor);
@@ -132,12 +132,12 @@ public class JogoDaVelha extends JDialog {
 		p1.add(mob1Image);
 
 		JRadioButton mob2 = new JRadioButton();
-		mob2.setBounds(135, 310, 30, 30);
+		mob2.setBounds(535, 160, 30, 30);
 		mob2.setBackground(new Color(255, 255, 255));
 		p1.add(mob2);
 
 		JLabel mob2Image = new JLabel();
-		mob2Image.setBounds(165, 310, 67, 70);
+		mob2Image.setBounds(565, 160, 67, 70);
 		ImageIcon image2 = new ImageIcon("img/mcn/zombie.png");
 		Image image2Resizor = image2.getImage().getScaledInstance(mob2Image.getWidth(), mob2Image.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon image2Resized = new ImageIcon(image2Resizor);
@@ -145,12 +145,12 @@ public class JogoDaVelha extends JDialog {
 		p1.add(mob2Image);
 
 		JRadioButton mob3 = new JRadioButton();
-		mob3.setBounds(245, 310, 30, 30);
+		mob3.setBounds(645, 160, 30, 30);
 		mob3.setBackground(new Color(255, 255, 255));
 		p1.add(mob3);
 
 		JLabel mob3Image = new JLabel();
-		mob3Image.setBounds(275, 310, 67, 70);
+		mob3Image.setBounds(675, 160, 67, 70);
 		ImageIcon image3 = new ImageIcon("img/mcn/skeleton.png");
 		Image image3Resizor = image3.getImage().getScaledInstance(mob3Image.getWidth(), mob3Image.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon image3Resized = new ImageIcon(image3Resizor);
@@ -158,12 +158,12 @@ public class JogoDaVelha extends JDialog {
 		p1.add(mob3Image);
 
 		JRadioButton mob4 = new JRadioButton();
-		mob4.setBounds(20, 410, 30, 30);
+		mob4.setBounds(420, 260, 30, 30);
 		mob4.setBackground(new Color(255, 255, 255));
 		p1.add(mob4);
 
 		JLabel mob4Image = new JLabel();
-		mob4Image.setBounds(50, 410, 67, 70);
+		mob4Image.setBounds(450, 260, 67, 70);
 		ImageIcon image4 = new ImageIcon("img/mcn/creeper.png");
 		Image image4Resizor = image4.getImage().getScaledInstance(mob1Image.getWidth(), mob1Image.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon image4Resized = new ImageIcon(image4Resizor);
@@ -171,12 +171,12 @@ public class JogoDaVelha extends JDialog {
 		p1.add(mob4Image);
 
 		JRadioButton mob5 = new JRadioButton();
-		mob5.setBounds(135, 410, 30, 30);
+		mob5.setBounds(535, 260, 30, 30);
 		mob5.setBackground(new Color(255, 255, 255));
 		p1.add(mob5);
 
 		JLabel mob5Image = new JLabel();
-		mob5Image.setBounds(165, 410, 67, 70);
+		mob5Image.setBounds(565, 260, 67, 70);
 		ImageIcon image5 = new ImageIcon("img/mcn/wither_skeleton.png");
 		Image image5Resizor = image5.getImage().getScaledInstance(mob5Image.getWidth(), mob5Image.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon image5Resized = new ImageIcon(image5Resizor);
@@ -184,12 +184,12 @@ public class JogoDaVelha extends JDialog {
 		p1.add(mob5Image);
 
 		JRadioButton mob6 = new JRadioButton();
-		mob6.setBounds(245, 410, 30, 30);
+		mob6.setBounds(645, 260, 30, 30);
 		mob6.setBackground(new Color(255, 255, 255));
 		p1.add(mob6);
 
 		JLabel mob6Image = new JLabel();
-		mob6Image.setBounds(275, 410, 75, 70);
+		mob6Image.setBounds(675, 260, 75, 70);
 		ImageIcon image6 = new ImageIcon("img/mcn/piglin.png");
 		Image image6Resizor = image6.getImage().getScaledInstance(mob6Image.getWidth(), mob6Image.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon image6Resized = new ImageIcon(image6Resizor);
@@ -205,10 +205,10 @@ public class JogoDaVelha extends JDialog {
 		bgMobs.add(mob6);
 		
 		JButton cadastrar = new JButton();
-		cadastrar.setBounds(400, 430, 100, 40);
+		cadastrar.setBounds(400-50, 430, 100, 40);
 		cadastrar.setFocusPainted(false);
 		cadastrar.setText("Cadastrar");
-		cadastrar.setBackground(new Color(133, 85, 163));
+		cadastrar.setBackground(new Color(221, 46, 68));
 		cadastrar.setForeground(Color.WHITE);
 		p1.add(cadastrar);		
 		
@@ -220,91 +220,91 @@ public class JogoDaVelha extends JDialog {
 		JLabel header2 = new JLabel();
 		header2.setBounds(0, 30, 800, 30);
 		header2.setHorizontalAlignment(SwingConstants.CENTER);
-		header2.setText("<html><body> <h1 style='color:#bb9aff;'> Cadastro - Player 2 </h1> </body> </html>");
+		header2.setText("<html><body> <h1 style='color:#dd2e44;'> Cadastro - Player 2 </h1> </body> </html>");
 		p2.add(header2);
 		
 		JLabel nome2 = new JLabel();
-		nome2.setBounds(30, 60, 70, 20);
+		nome2.setBounds(30, 120, 70, 20);
 		nome2.setText("<html><body> <h2> Nome: </h2> </body> </html>");
 		p2.add(nome2);
 		
 		JTextField nomeinput2 = new JTextField();
-		nomeinput2.setBounds(100, 62, 150, 20);
+		nomeinput2.setBounds(100, 122, 150, 20);
 		nomeinput2.setBorder(blackline);
 		p2.add(nomeinput2);
 		
 		JLabel win2 = new JLabel();
-		win2.setBounds(30, 90, 230, 25);
+		win2.setBounds(30, 160, 230, 25);
 		win2.setText("<html><body> <h2> Mensagem de Vitoria: </h2> </body> </html>");
 		p2.add(win2);
 		
 		JTextArea wininput2 = new JTextArea();
-		wininput2.setBounds(30, 120, 300, 150);
+		wininput2.setBounds(30, 200, 300, 150);
 		wininput2.setBorder(blackline);
 		p2.add(wininput2);
 		
 		JLabel mobsSection2 = new JLabel();
 		mobsSection2.setText("<html> <body> <p style='font-size:11px;'>Escolha seu mob favorito: </p></body> </html>");
-		mobsSection2.setBounds(100, 270, 200, 30);
+		mobsSection2.setBounds(500, 120, 200, 30);
 		p2.add(mobsSection2);
 
 		JRadioButton p2mob1 = new JRadioButton();
-		p2mob1.setBounds(20, 310, 30, 30);
+		p2mob1.setBounds(420, 160, 30, 30);
 		p2mob1.setBackground(new Color(255, 255, 255));
 		p2.add(p2mob1);
 
 		JLabel p2mob1Image = new JLabel();
-		p2mob1Image.setBounds(50, 310, 67, 70);
+		p2mob1Image.setBounds(450, 160, 67, 70);
 		p2mob1Image.setIcon(imageResized);
 		p2.add(p2mob1Image);
 
 		JRadioButton p2mob2 = new JRadioButton();
-		p2mob2.setBounds(135, 310, 30, 30);
+		p2mob2.setBounds(535, 160, 30, 30);
 		p2mob2.setBackground(new Color(255, 255, 255));
 		p2.add(p2mob2);
 
 		JLabel p2mob2Image = new JLabel();
-		p2mob2Image.setBounds(165, 310, 67, 70);
+		p2mob2Image.setBounds(565, 160, 67, 70);
 		p2mob2Image.setIcon(image2Resized);
 		p2.add(p2mob2Image);
 
 		JRadioButton p2mob3 = new JRadioButton();
-		p2mob3.setBounds(245, 310, 30, 30);
+		p2mob3.setBounds(645, 160, 30, 30);
 		p2mob3.setBackground(new Color(255, 255, 255));
 		p2.add(p2mob3);
 
 		JLabel p2mob3Image = new JLabel();
-		p2mob3Image.setBounds(275, 310, 67, 70);
+		p2mob3Image.setBounds(675, 160, 67, 70);
 		p2mob3Image.setIcon(image3Resized);
 		p2.add(p2mob3Image);
 
 		JRadioButton p2mob4 = new JRadioButton();
-		p2mob4.setBounds(20, 410, 30, 30);
+		p2mob4.setBounds(420, 260, 30, 30);
 		p2mob4.setBackground(new Color(255, 255, 255));
 		p2.add(p2mob4);
 
 		JLabel p2mob4Image = new JLabel();
-		p2mob4Image.setBounds(50, 410, 67, 70);
+		p2mob4Image.setBounds(450, 260, 67, 70);
 		p2mob4Image.setIcon(image4Resized);
 		p2.add(p2mob4Image);
 
 		JRadioButton p2mob5 = new JRadioButton();
-		p2mob5.setBounds(135, 410, 30, 30);
+		p2mob5.setBounds(535, 260, 30, 30);
 		p2mob5.setBackground(new Color(255, 255, 255));
 		p2.add(p2mob5);
 
 		JLabel p2mob5Image = new JLabel();
-		p2mob5Image.setBounds(165, 410, 67, 70);
+		p2mob5Image.setBounds(565, 260, 67, 70);
 		p2mob5Image.setIcon(image5Resized);
 		p2.add(p2mob5Image);
 
 		JRadioButton p2mob6 = new JRadioButton();
-		p2mob6.setBounds(245, 410, 30, 30);
+		p2mob6.setBounds(645, 260, 30, 30);
 		p2mob6.setBackground(new Color(255, 255, 255));
 		p2.add(p2mob6);
 
 		JLabel p2mob6Image = new JLabel();
-		p2mob6Image.setBounds(275, 410, 75, 70);
+		p2mob6Image.setBounds(675, 260, 75, 70);
 		p2mob6Image.setIcon(image6Resized);
 		p2.add(p2mob6Image);
 
@@ -317,10 +317,10 @@ public class JogoDaVelha extends JDialog {
 		bgMobs2.add(p2mob6);
 		
 		JButton cadastrar2 = new JButton();
-		cadastrar2.setBounds(400, 430, 100, 40);
+		cadastrar2.setBounds(350, 430, 100, 40);
 		cadastrar2.setFocusPainted(false);
 		cadastrar2.setText("Cadastrar");
-		cadastrar2.setBackground(new Color(133, 85, 163));
+		cadastrar2.setBackground(new Color(221, 46, 68));
 		cadastrar2.setForeground(Color.WHITE);
 		p2.add(cadastrar2);
 		
@@ -350,26 +350,26 @@ public class JogoDaVelha extends JDialog {
 		p3.add(winMsg);
 		
 		JButton reset = new JButton();
-		reset.setBounds(600, 140, 150, 30);
+		reset.setBounds(600, 188, 150, 35);
 		reset.setFocusPainted(false);
 		reset.setText("Resetar Vitorias");
-		reset.setBackground(new Color(133, 85, 163));
+		reset.setBackground(new Color(221, 46, 68));
 		reset.setForeground(Color.WHITE);
 		p3.add(reset);
 		
 		JButton clear = new JButton();
-		clear.setBounds(600, 200, 150, 30);
+		clear.setBounds(325, 410, 150, 50);
 		clear.setFocusPainted(false);
 		clear.setText("Limpar Tabela");
-		clear.setBackground(new Color(133, 85, 163));
+		clear.setBackground(new Color(221, 46, 68));
 		clear.setForeground(Color.WHITE);
 		p3.add(clear);
 		
 		JButton register = new JButton();
-		register.setBounds(600, 260, 150, 30);
+		register.setBounds(600, 238, 150, 35);
 		register.setFocusPainted(false);
 		register.setText("Recadastro");
-		register.setBackground(new Color(133, 85, 163));
+		register.setBackground(new Color(221, 46, 68));
 		register.setForeground(Color.WHITE);
 		p3.add(register);
 		
