@@ -9,15 +9,15 @@ public class Conexao {
         try{
            Class.forName("com.mysql.jdbc.Driver");
 
-           con = DriverManager.getConnection("jdbc:mysql://localhost:3301/bdlojinho","root","");
+           con = DriverManager.getConnection("jdbc:mysql://localhost/bdlojinho","root","");
 
-           System.out.println("Conexão realizada com sucesso.");
+           System.out.println("Conexao realizada com sucesso.");
         }
          catch(ClassNotFoundException ex){
-	        System.out.println("Driver JDBC-ODBC não encontrado"); 
+	        System.out.println("Driver JDBC-ODBC nao encontrado"); 
 	    }	         
          catch(SQLException ex){
-           System.out.println("Problemas na conexão com o banco de dados."); 
+           System.out.println("Problemas na conexao com o banco de dados."); 
         }         
     }
 
@@ -27,7 +27,7 @@ public class Conexao {
            System.out.println("Conexao finalizada com sucesso");
          }
          catch(SQLException ex){
-            System.out.println("Problemas ao encerrar a conexão."); 
+            System.out.println("Problemas ao encerrar a conexao."); 
          }
     }
 }

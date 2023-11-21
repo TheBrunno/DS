@@ -44,7 +44,7 @@ public class CadastrarProdutos extends JDialog {
 		produto.setText("Produto:");
 		categoria.setText("Categoria:");
 		valor.setText("Valor:");
-		descricao.setText("Descrição:");
+		descricao.setText("Descricao:");
 		quantidade.setText("Quantidade:");
 		
 		produto.setBounds(110, 130, 200, 30);

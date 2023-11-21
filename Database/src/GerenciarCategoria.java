@@ -29,7 +29,7 @@ public class GerenciarCategoria extends JDialog {
 	private String PK;
 	
 	public GerenciarCategoria() {
-		this.setTitle("Cadastrar categorias");
+		this.setTitle("Gerenciar categorias");
 		this.setSize(700, 500);
 		this.setLocationRelativeTo(null);
 		this.getContentPane().setBackground(new Color(255, 255, 255));
@@ -207,7 +207,7 @@ public class GerenciarCategoria extends JDialog {
 					state = (Statement) Conexao.con.createStatement();
 					state.executeUpdate(sql);
 					
-					JOptionPane.showMessageDialog(null,"Sua categoria foi editada com sucesso.", "Edição SQL", 1, null);
+					JOptionPane.showMessageDialog(null,"Sua categoria foi editada com sucesso.", "Ediï¿½ï¿½o SQL", 1, null);
 					editar.setVisible(false);
 					edt_categoria.setVisible(false);
 					tx_edtCategoria.setVisible(false);
@@ -232,7 +232,7 @@ public class GerenciarCategoria extends JDialog {
 					state = (Statement) Conexao.con.createStatement();
 					state.executeUpdate(sql);
 					
-					JOptionPane.showMessageDialog(null,"Sua categoria foi excluida com sucesso.", "Exclusão SQL", 1, null);
+					JOptionPane.showMessageDialog(null,"Sua categoria foi excluida com sucesso.", "Exclusï¿½o SQL", 1, null);
 					editar.setVisible(false);
 					deletar.setVisible(false);
 				}catch(SQLException err) {

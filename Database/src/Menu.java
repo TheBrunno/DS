@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class Menu extends JFrame{
 	
 	private JMenu arquivos = new JMenu("Arquivos");
-	private JMenu gerenciar = new JMenu("Gerenciar");
+	private JMenu adicionar = new JMenu("Adicionar");
 	private JMenu visualizar = new JMenu("Visualizar");
 	private JMenu ajuda = new JMenu("Ajuda");
 	
@@ -14,8 +14,8 @@ public class Menu extends JFrame{
 	private JMenuItem sair = new JMenuItem("Sair");
 	
 	// cadastrar
-	private JMenuItem ger_categoria = new JMenuItem("Categoria");
-	private JMenuItem ger_produto = new JMenuItem("Produto");
+	private JMenuItem add_categoria = new JMenuItem("Categoria");
+	private JMenuItem add_produto = new JMenuItem("Produto");
 	
 	//visualizar
 	private JMenuItem vis_categoria = new JMenuItem("Categoria");
@@ -38,8 +38,8 @@ public class Menu extends JFrame{
 		
 		arquivos.add(sair);
 		
-		gerenciar.add(ger_categoria);
-		gerenciar.add(ger_produto);
+		adicionar.add(add_categoria);
+		adicionar.add(add_produto);
 		
 		visualizar.add(vis_categoria);
 		visualizar.add(vis_produto);
@@ -48,24 +48,40 @@ public class Menu extends JFrame{
 		
 		this.setJMenuBar(bar);
 		bar.add(arquivos);
-		bar.add(gerenciar);
+		bar.add(adicionar);
 		bar.add(visualizar);
 		bar.add(ajuda);
 		
-		ger_categoria.addActionListener(new ActionListener() {
+		add_categoria.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GerenciarCategoria cad_categoria_window = new GerenciarCategoria();
-				cad_categoria_window.setVisible(true);
+				CadastrarCategorias add_categoria_window = new CadastrarCategorias();
+				add_categoria_window.setVisible(true);
 			}
 		});
-		ger_produto.addActionListener(new ActionListener() {
+		add_produto.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				CadastrarProdutos cad_produtos_window = new CadastrarProdutos();
 				cad_produtos_window.setVisible(true);
+			}
+		});
+		vis_categoria.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GerenciarCategoria ger_categoria_window = new GerenciarCategoria();
+				ger_categoria_window.setVisible(true);
+			}
+		});
+		vis_produto.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GerenciarProduto ger_produto_window = new GerenciarProduto();
+				ger_produto_window.setVisible(true);
 			}
 		});
 		sobre.addActionListener(new ActionListener() {
