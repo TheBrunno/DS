@@ -31,7 +31,8 @@ public class Menu extends JFrame{
 	
 	public Menu() {
 		this.setTitle("ETEC de Guaianazes");
-		this.setSize(1100, 900);
+		this.setSize(1920, 1080);
+		this.setExtendedState(JFrame. MAXIMIZED_BOTH);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.getContentPane().setBackground(new Color(255, 255, 255));
@@ -51,6 +52,15 @@ public class Menu extends JFrame{
 		bar.add(adicionar);
 		bar.add(visualizar);
 		bar.add(ajuda);
+		
+		JLabel title = new JLabel();
+		title.setText("<html><body><h1 style='font-size: 60px;'>Database Loja</h1></body></html>");
+		title.setBounds(0, 0, 1920, 780);
+		title.setForeground(Color.BLACK);
+		title.setHorizontalAlignment(SwingConstants.CENTER);
+		title.setVerticalAlignment(SwingConstants.CENTER);
+		this.add(title);
+		
 		
 		add_categoria.addActionListener(new ActionListener() {
 			

@@ -17,6 +17,12 @@ public class GerenciarProduto extends JDialog {
 	private JLabel edt_qtdeProduto = new JLabel();
 	private JLabel edt_categoriaProduto = new JLabel();
 	
+	private JLabel ex_produto = new JLabel();
+	private JLabel ex_valorProduto = new JLabel();
+	private JLabel ex_descProduto = new JLabel();
+	private JLabel ex_qtdeProduto = new JLabel();
+	private JLabel ex_categoriaProduto = new JLabel();
+	
 	private JTextField tx_produto = new JTextField();
 	private JTextField tx_edtProduto = new JTextField();
 	private JTextField tx_edtValorProduto = new JTextField();
@@ -61,44 +67,69 @@ public class GerenciarProduto extends JDialog {
 		//
 		
 		edt_produto.setText("Produto:");
-		edt_produto.setBounds(64, 204, 200, 30);
+		edt_produto.setBounds(64, 104, 200, 30);
 		edt_produto.setFont(new Font(edt_produto.getFont().getFontName(), Font.PLAIN, 16));
 		this.add(edt_produto);
 	
-		tx_edtProduto.setBounds(200, 204, 300, 30);
+		tx_edtProduto.setBounds(200, 104, 300, 30);
 		this.add(tx_edtProduto);
 		
 		edt_valorProduto.setText("Valor:");
-		edt_valorProduto.setBounds(64, 244, 200, 30);
+		edt_valorProduto.setBounds(64, 144, 200, 30);
 		edt_valorProduto.setFont(new Font(edt_produto.getFont().getFontName(), Font.PLAIN, 16));
 		this.add(edt_valorProduto);
 	
-		tx_edtValorProduto.setBounds(200, 244, 300, 30);
+		tx_edtValorProduto.setBounds(200, 144, 300, 30);
 		this.add(tx_edtValorProduto);
 		
 		edt_descProduto.setText("Descricao:");
-		edt_descProduto.setBounds(64, 284, 200, 30);
+		edt_descProduto.setBounds(64, 184, 200, 30);
 		edt_descProduto.setFont(new Font(edt_produto.getFont().getFontName(), Font.PLAIN, 16));
 		this.add(edt_descProduto);
 	
-		tx_edtDescProduto.setBounds(200, 284, 300, 30);
+		tx_edtDescProduto.setBounds(200, 184, 300, 30);
 		this.add(tx_edtDescProduto);
 		
 		edt_qtdeProduto.setText("Quantidade:");
-		edt_qtdeProduto.setBounds(64, 324, 200, 30);
+		edt_qtdeProduto.setBounds(64, 224, 200, 30);
 		edt_qtdeProduto.setFont(new Font(edt_produto.getFont().getFontName(), Font.PLAIN, 16));
 		this.add(edt_qtdeProduto);
 	
-		tx_edtQtdeProduto.setBounds(200, 324, 300, 30);
+		tx_edtQtdeProduto.setBounds(200, 224, 300, 30);
 		this.add(tx_edtQtdeProduto);
 		
 		edt_categoriaProduto.setText("Categoria:");
-		edt_categoriaProduto.setBounds(64, 364, 200, 30);
+		edt_categoriaProduto.setBounds(64, 264, 200, 30);
 		edt_categoriaProduto.setFont(new Font(edt_produto.getFont().getFontName(), Font.PLAIN, 16));
 		this.add(edt_categoriaProduto);
 		
-		cb_edtCategoria.setBounds(200, 364, 200, 30);
+		cb_edtCategoria.setBounds(200, 264, 200, 30);
 		this.add(cb_edtCategoria);
+		
+		ex_produto.setText("nomeProduto");
+		ex_produto.setBounds(140, 104, 200, 30);
+		ex_produto.setFont(new Font(edt_produto.getFont().getFontName(), Font.PLAIN, 16));
+		this.add(ex_produto);
+
+		ex_valorProduto.setText("valorProduto");
+		ex_valorProduto.setBounds(120, 144, 200, 30);
+		ex_valorProduto.setFont(new Font(edt_produto.getFont().getFontName(), Font.PLAIN, 16));
+		this.add(ex_valorProduto);
+		
+		ex_descProduto.setText("descProduto");
+		ex_descProduto.setBounds(155, 184, 350, 30);
+		ex_descProduto.setFont(new Font(edt_produto.getFont().getFontName(), Font.PLAIN, 16));
+		this.add(ex_descProduto);
+		
+		ex_qtdeProduto.setText("qtdeProduto");
+		ex_qtdeProduto.setBounds(165, 224, 200, 30);
+		ex_qtdeProduto.setFont(new Font(edt_produto.getFont().getFontName(), Font.PLAIN, 16));
+		this.add(ex_qtdeProduto);
+		
+		ex_categoriaProduto.setText("categoriaProduto");
+		ex_categoriaProduto.setBounds(150, 264, 200, 30);
+		ex_categoriaProduto.setFont(new Font(edt_produto.getFont().getFontName(), Font.PLAIN, 16));
+		this.add(ex_categoriaProduto);
 		
 		Conexao conex = new Conexao();
 		
@@ -137,6 +168,11 @@ public class GerenciarProduto extends JDialog {
 		tx_edtQtdeProduto.setVisible(false);
 		edt_categoriaProduto.setVisible(false);
 		cb_edtCategoria.setVisible(false);
+		ex_produto.setVisible(false);
+		ex_valorProduto.setVisible(false);
+		ex_descProduto.setVisible(false);
+		ex_qtdeProduto.setVisible(false);
+		ex_categoriaProduto.setVisible(false);
 		edt_confirm.setVisible(false);
 		
 		try {
@@ -201,6 +237,11 @@ public class GerenciarProduto extends JDialog {
 				tx_edtQtdeProduto.setVisible(false);
 				edt_categoriaProduto.setVisible(false);
 				cb_edtCategoria.setVisible(false);
+				ex_produto.setVisible(false);
+				ex_valorProduto.setVisible(false);
+				ex_descProduto.setVisible(false);
+				ex_qtdeProduto.setVisible(false);
+				ex_categoriaProduto.setVisible(false);
 				edt_confirm.setVisible(false);
 				deletar.setVisible(false);
 				editar.setVisible(false);
@@ -219,12 +260,47 @@ public class GerenciarProduto extends JDialog {
 					if(!resultset.next()) {
 						//n existe
 						criar.setVisible(true);
-						
 					}else {
 						//existe
 						PK = resultset.getString("idProduto");
 						editar.setVisible(true);
 						deletar.setVisible(true);
+						
+						edt_produto.setVisible(true);
+						edt_valorProduto.setVisible(true);
+						edt_descProduto.setVisible(true);
+						edt_qtdeProduto.setVisible(true);
+						edt_categoriaProduto.setVisible(true);
+						ex_produto.setVisible(true);
+						ex_valorProduto.setVisible(true);
+						ex_descProduto.setVisible(true);
+						ex_qtdeProduto.setVisible(true);
+						ex_categoriaProduto.setVisible(true);
+						
+						String sqlExibir = "SELECT * FROM tbProduto WHERE nomeProduto ='"+tx_produto.getText()+"' and deleted = 0";
+						ResultSet exibirSet;
+						ResultSet categoriaSet;
+						
+						
+						try {
+							exibirSet = state.executeQuery(sqlExibir);
+							if(exibirSet.next()) {
+								String exibirCategoria = "SELECT nomeCategoria FROM tbCategoria WHERE idCategoria = "+exibirSet.getString("idCategoria")+" ";
+								
+								ex_produto.setText(exibirSet.getString("nomeProduto"));
+								ex_valorProduto.setText(""+exibirSet.getDouble("valorProduto"));
+								ex_descProduto.setText(exibirSet.getString("descProduto"));
+								ex_qtdeProduto.setText(""+exibirSet.getInt("quantidadeProduto"));
+								
+								categoriaSet = state.executeQuery(exibirCategoria);
+								if(categoriaSet.next()) {
+									ex_categoriaProduto.setText(categoriaSet.getString("nomeCategoria"));
+								}
+							}
+						} catch (SQLException e1) {
+							System.out.println("Erro na visualizacao do produto");
+						}
+						
 					}
 				}catch(SQLException err) {
 					System.out.println("Erro na consulta.");
@@ -260,14 +336,28 @@ public class GerenciarProduto extends JDialog {
 				cb_edtCategoria.setVisible(true);
 				edt_confirm.setVisible(true);
 				
+				ex_produto.setVisible(false);
+				ex_valorProduto.setVisible(false);
+				ex_descProduto.setVisible(false);
+				ex_qtdeProduto.setVisible(false);
+				ex_categoriaProduto.setVisible(false);
+				
 				try {
 					state = (Statement) Conexao.con.createStatement();
 					produtoset = state.executeQuery(sql);
 					if(produtoset.next()) {
+						ResultSet categoriaSet;
+						String exibirCategoria = "SELECT nomeCategoria FROM tbCategoria WHERE idCategoria = "+produtoset.getString("idCategoria");
+						
 						tx_edtValorProduto.setText(""+produtoset.getDouble("valorProduto"));
 						tx_edtDescProduto.setText(produtoset.getString("descProduto"));
 						tx_edtQtdeProduto.setText(""+produtoset.getInt("quantidadeProduto"));
-						cb_edtCategoria.setSelectedIndex(produtoset.getInt("idCategoria")-1);
+						
+						categoriaSet = state.executeQuery(exibirCategoria);
+						
+						if(categoriaSet.next()) {
+							cb_edtCategoria.setSelectedItem(categoriaSet.getString("nomeCategoria"));
+						}
 					}
 				} catch (SQLException e1) {
 					System.out.println("Erro na visualizacao do produto");
@@ -284,13 +374,34 @@ public class GerenciarProduto extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				Statement state;
 				Conexao con = new Conexao();
-				String sql = "UPDATE tbProduto SET nomeProduto = '"+tx_edtProduto.getText()+"', valorProduto = "+tx_edtValorProduto.getText()+", descProduto = '"+tx_edtDescProduto.getText()+"', quantidadeProduto = "+tx_edtQtdeProduto.getText()+", idCategoria = "+(cb_edtCategoria.getSelectedIndex()+1)+"  WHERE idCategoria = '"+PK+"' and deleted = 0";
+				
+				ResultSet nomeCat;
+				String idCategoria = "1";
+				try {
+					con.conectar();
+					state = (Statement) Conexao.con.createStatement();
+					
+					String selected = (String)cb_edtCategoria.getSelectedItem();
+					String cat = "SELECT idCategoria FROM tbCategoria WHERE nomeCategoria = '"+selected+"' and deleted = 0";
+					
+					nomeCat = state.executeQuery(cat);
+					if(nomeCat.next()) {
+						idCategoria = nomeCat.getString("idCategoria");
+					}
+					
+					con.desconectar();
+				} catch (SQLException e1) {
+					System.out.println("Erro na selecao da categoria");
+				}
+				
+				String sql = "UPDATE tbProduto SET nomeProduto = '"+tx_edtProduto.getText()+"', valorProduto = "+tx_edtValorProduto.getText()+", descProduto = '"+tx_edtDescProduto.getText()+"', quantidadeProduto = "+tx_edtQtdeProduto.getText()+", idCategoria = "+idCategoria+"  WHERE idProduto = '"+PK+"' and deleted = 0";
 				
 				con.conectar();
 				
 				try {
 					state = (Statement) Conexao.con.createStatement();
 					state.executeUpdate(sql);
+					
 					
 					JOptionPane.showMessageDialog(null,"Seu produto foi editado com sucesso.", "Edicao SQL", 1, null);
 					editar.setVisible(false);
@@ -328,6 +439,18 @@ public class GerenciarProduto extends JDialog {
 					JOptionPane.showMessageDialog(null,"Seu produto foi excluida com sucesso.", "Exclusao SQL", 1, null);
 					editar.setVisible(false);
 					deletar.setVisible(false);
+					
+					edt_produto.setVisible(false);
+					edt_valorProduto.setVisible(false);
+					edt_descProduto.setVisible(false);
+					edt_qtdeProduto.setVisible(false);
+					edt_categoriaProduto.setVisible(false);
+					ex_produto.setVisible(false);
+					ex_valorProduto.setVisible(false);
+					ex_descProduto.setVisible(false);
+					ex_qtdeProduto.setVisible(false);
+					ex_categoriaProduto.setVisible(false);
+					
 				}catch(SQLException err) {
 					System.out.println("Erro no delete");
 				}

@@ -110,8 +110,25 @@ public class CadastrarProdutos extends JDialog {
 		salvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Conexao con = new Conexao();
-				String sql = "INSERT INTO tbProduto(nomeProduto, valorProduto, descProduto, quantidadeProduto, idCategoria) VALUES('"+tx_produto.getText()+"', '"+tx_valor.getText()+"', '"+tx_descricao.getText()+"', '"+tx_quantidade.getText()+"', '"+(tx_categoria.getSelectedIndex()+1)+"')";
-				
+				ResultSet nomeCat;
+				String idCategoria = "1";
+				try {
+					con.conectar();
+					state = (Statement) Conexao.con.createStatement();
+					
+					String selected = (String)tx_categoria.getSelectedItem();
+					String cat = "SELECT idCategoria FROM tbCategoria WHERE nomeCategoria = '"+selected+"' and deleted = 0";
+					
+					nomeCat = state.executeQuery(cat);
+					if(nomeCat.next()) {
+						idCategoria = nomeCat.getString("idCategoria");
+					}
+					
+					con.desconectar();
+				} catch (SQLException e1) {
+					System.out.println("Erro na selecao da categoria");
+				}
+				String sql = "INSERT INTO tbProduto(nomeProduto, valorProduto, descProduto, quantidadeProduto, idCategoria) VALUES('"+tx_produto.getText()+"', '"+tx_valor.getText()+"', '"+tx_descricao.getText()+"', '"+tx_quantidade.getText()+"', '"+idCategoria+"')";
 				con.conectar();
 				
 				try {
