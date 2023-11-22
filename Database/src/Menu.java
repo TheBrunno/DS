@@ -1,5 +1,7 @@
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -34,7 +36,7 @@ public class Menu extends JFrame{
 		this.setSize(1920, 1080);
 		this.setExtendedState(JFrame. MAXIMIZED_BOTH);
 		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		this.getContentPane().setBackground(new Color(255, 255, 255));
 		
 		arquivos.add(sair);
@@ -60,6 +62,20 @@ public class Menu extends JFrame{
 		title.setHorizontalAlignment(SwingConstants.CENTER);
 		title.setVerticalAlignment(SwingConstants.CENTER);
 		this.add(title);
+		
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				int saida;
+				saida = JOptionPane.showConfirmDialog(null, "Deseja mesmo sair?", "Saida", 0, 1);
+				
+				if(saida==0) {
+					System.exit(0);
+				}
+					
+				
+			}
+		});
 		
 		
 		add_categoria.addActionListener(new ActionListener() {
